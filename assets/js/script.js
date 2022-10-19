@@ -14,6 +14,8 @@ const buttonActionDiv = document.querySelector('div#button-action');
 const bookSubmitButton = document.querySelector('button#submit');
 const bookResetButton = document.querySelector('button#reset');
 
+const searchBookElement = document.querySelector('input#search');
+
 function resetForm() {
   bookIdElement.value = '';
   bookTitleElement.value = '';
@@ -45,6 +47,9 @@ function renderData() {
 
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
+    const searchQuery = searchBookElement.value;
+    if (!book.title.toLowerCase().includes(searchQuery.toLowerCase())) continue;
+
     if (book.isComplete) {
       readBookTable.innerHTML += `
       <tr class="divide-x divide-gray-300 hover:bg-blue-50 text-center">
@@ -171,3 +176,5 @@ window.addEventListener('DOMContentLoaded', () => {
   loadStorage();
   renderData();
 });
+
+searchBookElement.addEventListener('input', renderData);
