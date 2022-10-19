@@ -167,9 +167,14 @@ function updateBook() {
 }
 
 function deleteBook(index) {
-  books.splice(index, 1);
-  writeStorage();
-  renderData();
+  const book = books[index];
+  const confirmed = confirm(`Anda yakin akan menghapus buku '${book.title} (${book.year})' ?`);
+
+  if (confirmed) {
+    books.splice(index, 1);
+    writeStorage();
+    renderData();
+  }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
