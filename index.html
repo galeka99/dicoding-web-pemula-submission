@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookshelf Apps</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <main class="flex flex-col w-screen h-screen overflow-hidden">
+    <div id="header" class="flex flex-col items-center bg-blue-600 text-white shadow-lg py-2 px-3">
+      <span class="text-2xl font-bold uppercase">Bookshelf Apps</span>
+    </div>
+    <div class="flex flex-row w-full h-full">
+      <div class="flex flex-col w-3/12 p-4 h-screen overflow-y-auto shadow-xl">
+        <input type="hidden" id="book_id" value="">
+        <label for="title" class="mb-1">Judul Buku</label>
+        <input type="text" id="title" name="title" class="bg-zinc-50 hover:bg-zinc-100 border border-sky-400 hover:border-sky-500 focus:border-sky-600 outline-none rounded w-full p-2 mb-3">
+        <label for="author" class="mb-1">Penulis</label>
+        <input type="text" id="author" name="author" class="bg-zinc-50 hover:bg-zinc-100 border border-sky-400 hover:border-sky-500 focus:border-sky-600 outline-none rounded w-full p-2 mb-3">
+        <label for="publish_year" class="mb-1">Tahun Terbit</label>
+        <input type="number" id="publish_year" name="publish_year" class="bg-zinc-50 hover:bg-zinc-100 border border-sky-400 hover:border-sky-500 focus:border-sky-600 outline-none rounded w-full p-2 mb-3">
+        <div class="flex flex-row mb-3">
+          <input type="checkbox" id="is_complete" name="is_complete" class="mr-2">
+          <label for="is_complete" class="text-sm text-gray-600">Sudah dibaca</label>
+        </div>
+        <div id="button-action" class="flex flex-col gap-y-2">
+          <button id="submit" class="bg-green-500 hover:bg-green-600 text-white text-sm uppercase font-bold rounded transition-all py-2 px-5" onclick="insertBook()">Tambahkan</button>
+          <button id="reset" class="bg-red-500 hover:bg-red-600 text-white text-sm uppercase font-bold rounded transition-all py-2 px-5" onclick="resetForm()">Reset</button>
+        </div>
+      </div>
+      <div id="book-list" class="flex flex-col w-full h-full p-4 overflow-hidden">
+        <div id="unread-book" class="h-1/2 mb-3 overflow-y-auto">
+          <span class="text-xl font-bold uppercase text-amber-600">Belum Dibaca</span>
+          <table class="table-auto w-full border border-gray-300 divide-y divide-gray-300 mt-1">
+            <thead class="bg-blue-100 uppercase text-gray-700 divide-y divide-gray-300">
+              <tr class="divide-x divide-gray-300">
+                <th class="p-2">No</th>
+                <th class="p-2">ID Buku</th>
+                <th class="p-2">Judul Buku</th>
+                <th class="p-2">Penulis</th>
+                <th class="p-2">Tahun Terbit</th>
+                <th class="p-2">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="unread-book-content" class="divide-y divide-gray-300"></tbody>
+          </table>
+        </div>
+        <div id="read-book" class="h-1/2 overflow-y-auto">
+          <span class="text-xl font-bold uppercase text-green-600">Sudah Dibaca</span>
+          <table class="table-auto w-full border border-gray-300 divide-y divide-gray-300 mt-1">
+            <thead class="bg-blue-100 uppercase text-gray-700 divide-y divide-gray-300">
+              <tr class="divide-x divide-gray-300">
+                <th class="p-2">No</th>
+                <th class="p-2">ID Buku</th>
+                <th class="p-2">Judul Buku</th>
+                <th class="p-2">Penulis</th>
+                <th class="p-2">Tahun Terbit</th>
+                <th class="p-2">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="read-book-content" class="divide-y divide-gray-300"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
